@@ -1,0 +1,7 @@
+Dependency Injection Container:-
+It's just be a place to register or binding dependencies into them.
+It's just like a storage place.
+It's like a little registry.
+Then when we need to fetch those values we can resolved them out of Container.
+App.php
+It's just a conatainer, litterally a box where you take things and throw them into a box and assign a label to them
