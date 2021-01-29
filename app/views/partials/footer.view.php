@@ -1,6 +1,9 @@
 <footer>
-    <h5>Warrior</h5>
-    <p>All Rights Reserved</p>
+    <!-- <hr> -->
+    <div class="disclaimer">
+        <h5>SPREADING POSITIVITY</h5>
+        <p>&copy;&nbsp;<?= date('Y'); ?></p>
+    </div>
 </footer>
 
 </div>

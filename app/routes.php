@@ -1,5 +1,6 @@
 <?php
 $router->get('', 'HomeController@index');
+$router->get('about', 'AboutController@index');
 
 $router->get('login', 'Auth\LoginController@create');
 $router->post('login', 'Auth\LoginController@attemptLogin');

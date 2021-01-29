@@ -21,7 +21,7 @@ if (($page == 'Login') && (auth()))
         <header>
             <div class="logo-navigation">
                 <h1>
-                    <a href="/">Warrior</a>
+                    <a href="/">SPREADING<br>POSITIVITY</a>
                 </h1>
 
                 <?php require('nav.view.php'); ?>

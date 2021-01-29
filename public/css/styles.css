@@ -1,17 +1,24 @@
 html, body{
 	height: 100%;
 }
-h1, h2, h4, p {
+h1, h2, h4, h5, p {
 	margin: 0;
 	padding: 0;
 }
- a {
+a {
 	text-decoration:none;
 	color:inherit;	
+}
+nav{
+	text-align: right;
 }
 nav  a:hover{
 	text-decoration: underline;
 	color:gray;
+}
+nav span{
+	font-size: medium;
+    font-family: monospace;
 }
 body{
 	margin: 0;
@@ -80,6 +87,13 @@ main .gcontainer{
 	grid-gap:1em;
 	padding: 15px 0;
 }
+.about{
+		background: #c5c5;
+		width: 1000px;
+		padding: 10px;
+		border-radius: 5px;
+		margin: 15px 0;
+}
 .gcontainer .item{
 	/* text-align: center; */
 	padding: 10px 10px;
@@ -94,11 +108,14 @@ main .gcontainer{
 	width: 200px;
 	height: 250px;
 }
+.gcontainer p{
+	color: #c6c6c6;
+}
 main footer{
 padding: 20px;
 text-align: center;
 }
-main footer button{
+main button{
 	    padding: 10px 13px;
     border-radius: 5%;
     background:#951495;
@@ -107,13 +124,25 @@ main footer button{
 	font-size: large;
 	cursor: pointer;
 }
+.latest{
+	display: flex;
+	justify-content: space-evenly;
+	height: 500px;
+	padding:20px 0;
+}
+.latest div{
+	overflow:scroll;
+}
 #container > footer{
 	text-align: center;
 	padding-bottom: 20px;
-	background:#c5c5c5;
+	/* background:#c5c5c5; */
+	background: linear-gradient(180deg,#911494,#ffffff);
 }
 /* for add story page */
-
+.disclaimer{
+	margin: 30px 0;
+}
 .box {
 	padding: 20px;
 	border: 1px solid #e3e3e3;
@@ -176,8 +205,28 @@ main footer button{
 
 
 .current_page_item{
-
-	color:#951495;
-	font-weight: bold;
+	color: #951495;
+    font-weight: bold;
+    border: 1px solid;
+    padding: 2px 5px;
+    box-shadow: 1px 2px;
  
+}
+.video{
+	display: flex;
+    justify-content: space-between;
+}
+.awerness{
+	display: grid;
+    grid-template-columns: auto auto auto;
+}
+.awerness .item{
+	margin: 2px;
+    text-align: center;
+    padding: 15px 0;
+}
+.awerness figure {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
 }
