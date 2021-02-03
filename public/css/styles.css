@@ -1,7 +1,7 @@
 html, body{
 	height: 100%;
 }
-h1, h2, h4, h5, p {
+h1, h2, h3 , h4, h5, p {
 	margin: 0;
 	padding: 0;
 }
@@ -51,14 +51,6 @@ body{
 	display: flex;
 	justify-content: space-between;
 }
-
-/* .logo-navigation > nav ul li a{
-	text-decoration:none;
-	color:inherit;	
-} */
-/* nav ul li a:hover{
-	color:gray;
-} */
 .banner {
 	text-align: center;
 }
@@ -87,6 +79,70 @@ main .gcontainer{
 	grid-gap:1em;
 	padding: 15px 0;
 }
+/* For Story Details Page */
+
+.story_author{
+	display: block;
+	font-size:1em;
+	font-weight: bold;
+	margin-bottom: 4px;
+}
+.story_time{
+	color: #a9a9a9;
+    font-size: 0.857em;
+}
+
+.story_location{
+	font-size: 0.8em;
+    color: #41a9c1;
+}
+.story_title{
+	display: block;
+    font-size: 1.2em;
+    font-weight: 400;
+    margin: 19px 0;
+}
+.story_images{
+	margin: 10px 0;
+}
+.story_all_images{
+	padding: 10px 0;
+}
+.comment{
+	display: flex;
+    flex-direction: column;
+}
+.story_review{
+	height: 50px;
+    display: flex;
+    justify-content: space-between;
+	padding: 10px 5px;
+	border-bottom: 0.5px solid;
+	margin-bottom: 12px;
+}
+.login_box{
+	display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+.sign_in_content{
+	width: 400px;
+    padding: 8px 18px;
+    border-radius: 10px;
+    background: lightgray;
+}
+.sign_in_content button{
+	float: right;
+	border-radius: 20px;
+}
+
+.comment_box form > p{
+	padding:5px 0;
+}
+.comment_box form > textarea{
+	width:100%
+}
+/* Story Details Page End Here */
 .about{
 		background: #c5c5;
 		width: 1000px;
@@ -116,7 +172,7 @@ padding: 20px;
 text-align: center;
 }
 main button{
-	    padding: 10px 13px;
+	padding: 10px 13px;
     border-radius: 5%;
     background:#951495;
     border: none;
@@ -188,7 +244,7 @@ main button{
     color: teal;
 }
 .btn {
-    margin-left: 201px;
+    /* margin-left: 201px; */
     border-radius: 5%;
     background: #0066ff;
     color: white;
