@@ -16,38 +16,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `comments`
---
-
-DROP TABLE IF EXISTS `comments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `comments` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `story_id` int NOT NULL,
-  `body` text NOT NULL,
-  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  KEY `user_id` (`user_id`),
-  KEY `story_id` (`story_id`),
-  CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`story_id`) REFERENCES `stories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `comments`
---
-
-LOCK TABLES `comments` WRITE;
-/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (1,19,16,'Lovely Work','2021-02-04 19:24:26'),(2,14,14,'Good Work','2021-02-04 22:31:19'),(5,14,16,'Keep it up','2021-02-05 12:58:20'),(6,13,9,'Hello There','2021-02-12 11:11:37');
-/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `images`
 --
 
@@ -62,7 +30,7 @@ CREATE TABLE `images` (
   UNIQUE KEY `id` (`id`),
   KEY `fk_story_image` (`story_id`),
   CONSTRAINT `fk_story_image` FOREIGN KEY (`story_id`) REFERENCES `stories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,41 +39,8 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (5,'./public/storage/images/1608541265_mygov-10000000001236923514-1024x768.jpeg',9),(6,'./public/storage/images/1608541265_mygov-1000000000781202150-1024x768.jpeg',14),(7,'./public/storage/images/1608558573_demo1.jpg',15),(8,'./public/storage/images/1608558573_demo2.jpg',15),(10,'./public/storage/images/1612339052_mygov-10000000001063409973.jpg',16);
+INSERT INTO `images` VALUES (5,'./public/storage/images/1608541265_mygov-10000000001236923514-1024x768.jpeg',14),(6,'./public/storage/images/1608541265_mygov-1000000000781202150-1024x768.jpeg',14),(7,'./public/storage/images/1608558573_demo1.jpg',15),(8,'./public/storage/images/1608558573_demo2.jpg',15);
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `likes`
---
-
-DROP TABLE IF EXISTS `likes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `likes` (
-  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `story_id` int NOT NULL,
-  `liked` tinyint(1) NOT NULL,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  UNIQUE KEY `unq_likes` (`user_id`,`story_id`),
-  KEY `story_id` (`story_id`),
-  CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`story_id`) REFERENCES `stories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `likes`
---
-
-LOCK TABLES `likes` WRITE;
-/*!40000 ALTER TABLE `likes` DISABLE KEYS */;
-INSERT INTO `likes` VALUES (1,14,16,1,'2021-02-05 17:15:08','2021-02-05 17:15:08'),(2,19,14,1,'2021-02-05 17:16:15','2021-02-05 17:16:15'),(3,1,16,0,'2021-02-05 17:16:15','2021-02-05 17:16:15');
-/*!40000 ALTER TABLE `likes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -130,7 +65,7 @@ CREATE TABLE `stories` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `stories_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +74,7 @@ CREATE TABLE `stories` (
 
 LOCK TABLES `stories` WRITE;
 /*!40000 ALTER TABLE `stories` DISABLE KEYS */;
-INSERT INTO `stories` VALUES (9,14,'test','test','https://www.youtube.com/watch?v=q1anZ08Y7nQ','WB','test','test','test','2020-12-08 10:06:20',0),(10,13,'Multi Image Uploading','test','https://www.youtube.com/watch?v=q1anZ08Y7nQ','Test','Test','Test','Test, Multiple','2020-12-12 22:26:34',0),(11,14,'Multi Image Uploading2','test','https://www.youtube.com/watch?v=q1anZ08Y7nQ','Test','Test','Test','Test, Multiple','2020-12-12 22:54:39',0),(14,13,'Anindya Biltu','Abhyudaya volunteers distribute Mask and Kashaya powder to MCC workers at Ward 53','https://www.youtube.com/watch?v=q1anZ08Y7nQ','Karnataka','Mysore','Mysore','MCC, Help','2020-12-21 14:31:05',1),(15,13,'John Doe','test','https://www.youtube.com/watch?v=QYY4KfG3mtA','West Bengal','Hooghly','Baidyabati','Test','2020-12-21 19:19:33',0),(16,13,'BHAVYA DAS','LIFE WARIORS','https://www.youtube.com/watch?v=q1anZ08Y7nQ','Delhi','North West','Test','Corona, Awareness','2021-02-03 13:27:32',0);
+INSERT INTO `stories` VALUES (9,14,'test','test','https://www.youtube.com/watch?v=q1anZ08Y7nQ','WB','test','test','test','2020-12-08 10:06:20',0),(10,13,'Multi Image Uploading','test','https://www.youtube.com/watch?v=q1anZ08Y7nQ','Test','Test','Test','Test, Multiple','2020-12-12 22:26:34',0),(11,14,'Multi Image Uploading2','test','https://www.youtube.com/watch?v=q1anZ08Y7nQ','Test','Test','Test','Test, Multiple','2020-12-12 22:54:39',0),(14,13,'Anindya Biltu','Abhyudaya volunteers distribute Mask and Kashaya powder to MCC workers at Ward 53','https://www.youtube.com/watch?v=q1anZ08Y7nQ','Karnataka','Mysore','Mysore','MCC, Help','2020-12-21 14:31:05',1),(15,13,'John Doe','test','https://www.youtube.com/watch?v=QYY4KfG3mtA','West Bengal','Hooghly','Baidyabati','Test','2020-12-21 19:19:33',0);
 /*!40000 ALTER TABLE `stories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,4 +121,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-17 23:19:13
+-- Dump completed on 2021-01-06 23:29:49
