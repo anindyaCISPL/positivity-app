@@ -35,40 +35,75 @@
             <div class="comment">
                 <div class="story_review">
                     <span class="story_like">
-                        <i class="far fa-heart"></i> 0
+                        <span style="margin-right: 10px">
+                            <a href="/story/likes?id=<?= $story[0]->id; ?>"><i class="fas fa-thumbs-up"></i></a> 10
+                        </span>
+                        <span>
+                            <a href="/story/dislikes?id=<?= $story[0]->id; ?>"><i class="fas fa-thumbs-down"></i></a> 5
+                        </span>
                     </span>
                     <span class="story_keywords">
                         <?= $story[0]->keywords; ?>
                     </span>
                     <span class="story_comment">
-                        <i class="far fa-comment"></i> 0 comments
+                        <i class="far fa-comment"></i> <?= count($comments); ?> comments
                     </span>
                 </div>
                 <?php
+                // if any comments registerd against that story only then replies section display
+                if (count($comments)) { ?>
+                    <div class="replies">
+                        <h3>Replies</h3>
+                        <?php foreach ($comments as $comment) : ?>
+                            <div class="reply_box">
+                                <div class="avatar">
+                                    <i class="fas fa-user-circle fa-3x"></i>
+                                </div>
+                                <div class="content">
+                                    <span class="commenter"><?= username($comment->user_id); ?></span>says
+                                    <p class="comment_time"><?= date('F j,Y', strtotime($comment->updated)); ?></p>
+                                    <p class="comment_body"><?= $comment->body; ?></p>
+                                </div>
+
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php
+                    // Only logined user can be able to make comment
+                }
                 if (auth()) {
+                    // if the post belongs to logined user only then update previlage granted 
                     if (auth()->id == $story[0]->user_id) { ?>
                         <div class="modify_btn">
                             <a href="/story/edit?id=<?= $story[0]->id; ?>" class="btn">Update</a>
                         </div>
-                    <?php } else { ?>
+                    <?php } else {
+                        //for other registered users  Comment section display
+                    ?>
                         <div class="comment_box">
                             <h3>Leave a Reply</h3>
-                            <form action="">
+                            <form action="story/comment" method="post">
+                                <input type="hidden" name="user_id" value="<?= auth()->id ?>">
+                                <input type="hidden" name="story_id" value="<?= $story[0]->id ?>">
                                 <p>Comment</p>
-                                <textarea name="comment" id="" cols="30" rows="10"></textarea>
+                                <textarea name="body" id="" cols="30" rows="10" required="required"></textarea>
                                 <div class="control">
                                     <input type="submit" value="Post" class="btn">
                                 </div>
                             </form>
                         </div>
                     <?php }
-                } else { ?>
+                } else {
+                    //the following section display for guest
+                    ?>
                     <div class="login_box">
                         <span class="sign_in">
-                            <i class="fas fa-sign-in-alt fa-2x"></i>
+                            <a href="/login/">
+                                <i class="fas fa-sign-in-alt fa-2x"></i>
+                            </a>
                         </span>
                         <span class="sign_in_content">
-                            Login to post your comment <button>Login</button>
+                            Login to post your comment <a href="/login/"><button>Login</button></a>
                         </span>
                     </div>
                 <?php } ?>

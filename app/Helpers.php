@@ -52,7 +52,10 @@ function auth()
 {
     return $_SESSION['current_user'];
 }
-
+function username($id)
+{
+    return App::get('database')->select('users', 'id', $id)[0]->name;
+}
 function getimage($column, $value, $limit = 100, $offset = 0)
 {
     return App::get('database')->selectM('images', 'location', $column, $value, $limit, $offset);

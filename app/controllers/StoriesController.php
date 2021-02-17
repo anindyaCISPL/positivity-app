@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Comment;
 use App\Models\Story;
 use App\Models\Image;
 
@@ -16,7 +17,10 @@ class StoriesController
     public function show()
     {
         $story = Story::fetch(['id' => request('id')]);
-        return view('stories/show', compact('story'));
+        $comments = Comment::fetch(['story_id' => request('id')]);
+
+        // dd($comment);
+        return view('stories/show', compact('story', 'comments'));
     }
 
     public function create()
@@ -99,5 +103,31 @@ class StoriesController
         $res = Story::delete(request('id'));
         if ($res)
             redirect('stories/');
+    }
+    public function comment()
+    {
+        $form_data = request();
+        //validation check start
+        $field = [];
+        foreach ($form_data as $key => $data) {
+            if (empty($data)) {
+                $field[] = $key;
+            }
+        }
+        // dd($field);
+        if (!empty($field)) {
+            foreach ($field as $val) {
+                $_SESSION['error'][$val] = ucwords($val) . " field is required";
+            }
+            // dd($_SESSION['error']);
+            redirect('story?id=' . $form_data['story_id']);
+        }
+        // validation check end
+        $comment = Comment::create($form_data);
+        if ($comment) {
+            return redirect('story?id=' . $form_data['story_id']);
+        }
+
+        // dd(request());
     }
 }

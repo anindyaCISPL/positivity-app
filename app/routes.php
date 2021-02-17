@@ -1,4 +1,5 @@
 <?php
+$router->get('test', 'HomeController@test');
 $router->get('', 'HomeController@index');
 $router->get('about', 'AboutController@index');
 
@@ -24,6 +25,11 @@ $router->get('story/edit', 'StoriesController@edit');
 $router->post('story/edit', 'StoriesController@update');
 
 $router->get('story/delete', 'StoriesController@destroy');
+
+$router->post('story/comment', 'StoriesController@comment');
+
+$router->get('story/likes', 'StoryLikesController@store');
+$router->get('story/dislikes', 'StoryLikesController@destroy');
 
 // Admin Panel Routes
 $router->get('admin', 'AdminController@index');

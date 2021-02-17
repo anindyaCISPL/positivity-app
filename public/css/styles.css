@@ -135,16 +135,49 @@ main .gcontainer{
 	float: right;
 	border-radius: 20px;
 }
-
+.sign_in_content button:focus{
+	outline:none;
+}
 .comment_box form > p{
 	padding:5px 0;
 }
 .comment_box form > textarea{
 	width:100%
 }
+.replies{
+	margin-bottom: 3px;
+}
+.replies h3{
+	margin-bottom: 10px;
+    font-size: 1em;
+}
+.replies .reply_box{
+	display: flex;
+    margin-bottom: 10px;
+}
+.replies .content{
+	font-size: 12px;
+}
+.replies .commenter{
+	font-style: italic;
+    color: violet;
+    padding-right: 3px;
+    font-size: 15px;
+}
+
+.replies .comment_time{
+	color: #a9a9a9;
+    font-size: 0.857em;
+}
+.replies .comment_body{
+	margin-top: 5px;
+}
+.replies .avatar {
+	margin-right: 7px;
+}
 /* Story Details Page End Here */
 .about{
-		background: #c5c5;
+		background: lightcyan;
 		width: 1000px;
 		padding: 10px;
 		border-radius: 5px;
@@ -183,8 +216,14 @@ main button{
 .latest{
 	display: flex;
 	justify-content: space-evenly;
-	height: 500px;
+	height: 400px;
 	padding:20px 0;
+}
+.latest .dvideo{
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
 }
 .latest div{
 	overflow:scroll;

@@ -40,13 +40,19 @@ require('partials/header.view.php');
         <button><a href="/stories/">More Stories</a></button>
     </footer>
     <section class="about">
-        <h2>Latest News and Development of Covid19</h2>
+        <h2>LATEST NEWS AND DEVELOPMENT OF COVID19</h2>
         <div class="latest">
-            <div>
-                <a class="twitter-timeline" href="https://twitter.com/MoHFW_INDIA?ref_src=twsrc%5Etfw">Tweets by MoHFW_INDIA</a>
-                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class="dvideo">
+                <div>
+                    <iframe frameborder="0" width="" height="100%" src="https://www.dailymotion.com/embed/video/x7yxswn" allowfullscreen allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
+                <div>
+                    <iframe frameborder="0" width="" height="100%" src="https://www.dailymotion.com/embed/video/x7yfoue" allowfullscreen allow="autoplay; fullscreen">
+                    </iframe>
+                </div>
             </div>
-            <div>
+            <div style="overflow: scroll;">
                 <a class="twitter-timeline" href="https://twitter.com/coronaviruscare?ref_src=twsrc%5Etfw">Tweets by coronaviruscare</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
