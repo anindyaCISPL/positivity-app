@@ -18,9 +18,11 @@ class StoriesController
     {
         $story = Story::fetch(['id' => request('id')]);
         $comments = Comment::fetch(['story_id' => request('id')]);
+        $likes = Story::likes(request('id'))[0];
+        $dislikes = Story::dislikes(request('id'))[0];
 
-        // dd($comment);
-        return view('stories/show', compact('story', 'comments'));
+        // dd($likes->count);
+        return view('stories/show', compact('story', 'comments', 'likes', 'dislikes'));
     }
 
     public function create()

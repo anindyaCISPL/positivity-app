@@ -36,10 +36,16 @@
                 <div class="story_review">
                     <span class="story_like">
                         <span style="margin-right: 10px">
-                            <a href="/story/likes?id=<?= $story[0]->id; ?>"><i class="fas fa-thumbs-up"></i></a> 10
+                            <a href="/story/likes?id=<?= $story[0]->id; ?>">
+                                <i class="fas fa-thumbs-up" <?php if ($likes->count) echo "style='color:olivedrab'"; ?>></i>
+                            </a>
+                            <?= $likes->count; ?>
                         </span>
                         <span>
-                            <a href="/story/dislikes?id=<?= $story[0]->id; ?>"><i class="fas fa-thumbs-down"></i></a> 5
+                            <a href="/story/dislikes?id=<?= $story[0]->id; ?>">
+                                <i class="fas fa-thumbs-down" <?php if ($likes->count) echo "style='color:slategrey'"; ?>></i>
+                            </a>
+                            <?= $dislikes->count; ?>
                         </span>
                     </span>
                     <span class="story_keywords">

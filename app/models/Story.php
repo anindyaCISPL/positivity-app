@@ -33,4 +33,45 @@ class Story
     {
         return App::get('database')->delete('stories', $id);
     }
+    // like/dislike methods
+
+    // story have total number of likes
+    public static function likes($id)
+    {
+        return App::get('database')->query("SELECT count(*) as count from likes where story_id=$id and liked=TRUE");
+    }
+    // story have total number of dislikes
+    public static function dislikes($id)
+    {
+        return App::get('database')->query("SELECT count(*) as count from likes where story_id=$id and liked=FALSE");
+    }
+    // to like the story
+    public static function like($story_id)
+    {
+        return App::get('database')->updateOrInsert(
+            'likes',
+            [
+                'user_id' => auth()->id,
+                'story_id' => $story_id
+            ],
+            [
+                'liked' => 1,
+            ]
+        );
+    }
+    // to dislike the story
+
+    public static function dislike($story_id)
+    {
+        return App::get('database')->updateOrInsert(
+            'likes',
+            [
+                'user_id' => auth()->id,
+                'story_id' => $story_id
+            ],
+            [
+                'liked' => 0,
+            ]
+        );
+    }
 }
